@@ -1,0 +1,9 @@
+node_modules
+node_modules
+deploy/
+.git/
+*.md
+.gitignore
+!package.yaml
+!tsconfig.yaml
+*.tgz
