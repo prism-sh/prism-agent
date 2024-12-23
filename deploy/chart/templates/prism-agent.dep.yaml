@@ -38,6 +38,8 @@ spec:
                 name: prism-agent-env
             - secretRef:
                 name: prism-agent-secrets-required
+            - secretRef:
+                name: prism-agent-encryption-key
           ports:
             {{- toYaml .Values.service.ports | nindent 12 }}
           resources:
