@@ -3,11 +3,7 @@
   "clients": [],
   "plugins": [],
   "settings": {
-    "secrets": {
-      "SOLANA_PRIVATE_KEY": "",
-      "SOLANA_RPC_URL": "",
-      "OPENAI_API_KEY": ""
-    },
+    "secrets": {},
     "voice": {
       "model": "en_US-hfc_female-medium"
     }

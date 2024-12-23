@@ -1,4 +1,4 @@
-import PostgresDatabaseAdapter from "@ai16z/adapter-postgres";
+import { PostgresDatabaseAdapter } from "@ai16z/adapter-postgres";
 import { SqliteDatabaseAdapter } from "@ai16z/adapter-sqlite";
 import { AutoClientInterface } from "@ai16z/client-auto";
 import { DirectClient, DirectClientInterface } from "@ai16z/client-direct";
@@ -7,25 +7,43 @@ import { TelegramClientInterface } from "@ai16z/client-telegram";
 import { TwitterClientInterface } from "@ai16z/client-twitter";
 import {
   AgentRuntime,
+  CacheManager,
   Character,
+  DbCacheAdapter,
   elizaLogger,
   IAgentRuntime,
   ICacheManager,
   IDatabaseAdapter,
+  IDatabaseCacheAdapter,
   settings,
-  stringToUuid
+  stringToUuid,
 } from "@ai16z/eliza";
 import { bootstrapPlugin } from "@ai16z/plugin-bootstrap";
 import { createNodePlugin } from "@ai16z/plugin-node";
+import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
 import readline from "readline";
 import { fileURLToPath } from "url";
-import { initializeDatabase, intializeDbCache } from "./lib/databases.ts";
+import { character as defaultCharacter } from "./character.ts";
+import { loadEnv } from "./lib/utils.ts";
 
 const nodePlugin = createNodePlugin();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+loadEnv();
+
+function initializeDatabase(dataDir: string) {
+  if (process.env.POSTGRES_URL) {
+    return new PostgresDatabaseAdapter({
+      connectionString: process.env.POSTGRES_URL,
+    });
+  } else {
+    const filePath = process.env.SQLITE_FILE ?? path.resolve(dataDir, "db.sqlite");
+    return new SqliteDatabaseAdapter(new Database(filePath));
+  }
+}
 
 async function initializeClients(character: Character, runtime: IAgentRuntime) {
   const clients = [];
@@ -55,13 +73,13 @@ async function initializeClients(character: Character, runtime: IAgentRuntime) {
 
 function createAgent(
   character: Character,
-  db: PostgresDatabaseAdapter | SqliteDatabaseAdapter,
+  db: IDatabaseAdapter,
   cache: ICacheManager,
 ) {
-  console.log("Creating PRISM Agent Runtime with character:", character.name);
+  console.log("Creating agent runtime with character:", character);
   return new AgentRuntime({
-    databaseAdapter: db as IDatabaseAdapter,
-    token: process.env.OPENROUTER_API_KEY,
+    databaseAdapter: db,
+    token: process.env.MODEL_API_KEY,
     modelProvider: character.modelProvider,
     evaluators: [],
     character,
@@ -78,20 +96,13 @@ function createAgent(
   });
 }
 
-async function loadCharacter(): Promise<Character> {
-  // load the character.json file from the disk
-  const characterFilePath = path.join(__dirname, "../character.json");
-  try {
-    const character = await fs.promises.readFile(characterFilePath, "utf-8");
-    return JSON.parse(character) as Character;
-  } catch (error) {
-    throw new Error(`Failed to load character file at ${characterFilePath}: ${error.message}`);
-  }
+function intializeDbCache(character: Character, db: IDatabaseCacheAdapter) {
+  return new CacheManager(new DbCacheAdapter(db, character.id));
 }
 
 async function startAgent() {
   try {
-    const character = await loadCharacter();
+    const character = defaultCharacter;
     character.id ??= stringToUuid(character.name);
     character.username ??= character.name;
 
