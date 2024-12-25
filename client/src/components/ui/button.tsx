@@ -1,57 +1,38 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-
+import React from "react";
 import { cn } from "@/lib/utils";
 
-const buttonVariants = cva(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-    {
-        variants: {
-            variant: {
-                default:
-                    "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-                destructive:
-                    "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-                outline:
-                    "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-                secondary:
-                    "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-                ghost: "hover:bg-accent hover:text-accent-foreground",
-                link: "text-primary underline-offset-4 hover:underline",
-            },
-            size: {
-                default: "h-9 px-4 py-2",
-                sm: "h-8 rounded-md px-3 text-xs",
-                lg: "h-10 rounded-md px-8",
-                icon: "h-9 w-9",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-            size: "default",
-        },
+
+const PrimaryButton = React.forwardRef<
+    HTMLButtonElement,
+    React.ComponentProps<"button"> & {
+        asChild?: boolean;
+        isActive?: boolean;
     }
-);
+>(
+    (
+        {
+            isActive = false,
+            className,
+            ...props
+        },
+        ref
+    ) => {
 
-export interface ButtonProps
-    extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-        VariantProps<typeof buttonVariants> {
-    asChild?: boolean;
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
-        const Comp = asChild ? Slot : "button";
         return (
-            <Comp
-                className={cn(buttonVariants({ variant, size, className }))}
+            <button
                 ref={ref}
+                data-sidebar="menu-button"
+                data-active={isActive}
+                className={cn(
+                    "border border-white flex justify-center rounded-[15px] p-1.5 text-[15.5px] font-medium w-full whitespace-nowrap flex *:flex *:justify-center *:w-full",
+                    className,
+                    (isActive ? "bg-[#FFFFFF]" : "bg-[#0D0D0D]"),
+                    (isActive ? "text-[#000000]" : "text-[#FFFFFF]")
+                )}
                 {...props}
             />
         );
     }
-);
-Button.displayName = "Button";
+)
 
-export { Button, buttonVariants };
+export { PrimaryButton };

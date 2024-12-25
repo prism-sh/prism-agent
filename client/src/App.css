@@ -4,6 +4,12 @@
     text-align: center;
 }
 
+body{
+    background: linear-gradient(116.68deg, #101010 0%, #000417 63.24%);
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
 .logo {
     height: 6em;
     padding: 1.5em;
@@ -38,4 +44,14 @@
 
 .read-the-docs {
     color: #888;
+}
+
+
+.typeshit::-webkit-scrollbar {
+    display: none;
+}
+
+.typeshit {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }

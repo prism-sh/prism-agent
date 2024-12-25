@@ -51,6 +51,22 @@ export default {
                     5: "hsl(var(--chart-5))",
                 },
             },
+
+            animation: {
+                fadeIn: 'fadeInAnimation 300ms ease-in-out',
+                fadeOut: 'fadeOutAnimation 300ms ease-in-out',
+            },
+
+            keyframes: theme => ({
+                fadeInAnimation: {
+                    '0%': { opacity:  0.2},
+                    '100%': { opacity: 1 },
+                },
+                fadeOutAnimation: {
+                    '0%': { opacity:  1},
+                    '100%': { opacity: 0 },
+                },
+            }),
         },
     },
     plugins: [],

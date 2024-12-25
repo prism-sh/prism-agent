@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
+import { BackgroundGradient } from "./components/ui/backgroundGradient";
 
 type Agent = {
     id: string;
@@ -21,6 +21,8 @@ function Agents() {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
+            <BackgroundGradient/>
+
             <h1 className="text-2xl font-bold mb-8">Select your agent:</h1>
 
             {isLoading ? (
@@ -28,15 +30,15 @@ function Agents() {
             ) : (
                 <div className="grid gap-4 w-full max-w-md">
                     {agents?.map((agent) => (
-                        <Button
+                        <button
                             key={agent.id}
-                            className="w-full text-lg py-6"
+                            className="bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2 w-full text-lg py-3 rounded-lg font-semibold"
                             onClick={() => {
                                 navigate(`/${agent.id}`);
                             }}
                         >
                             {agent.name}
-                        </Button>
+                        </button>
                     ))}
                 </div>
             )}

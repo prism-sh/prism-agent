@@ -1,5 +1,8 @@
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import logoImage from "../assets/prism_logo.png"
+import { useEffect, useState } from "react";
+import { PrimaryButton } from "@/components/ui/button";
 
 import {
     Sidebar,
@@ -8,9 +11,8 @@ import {
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarMenuItem,
-    SidebarTrigger,
+    SidebarBackButton,
 } from "@/components/ui/sidebar";
 
 // Menu items.
@@ -18,37 +20,49 @@ const items = [
     {
         title: "Chat",
         url: "chat",
-        icon: Inbox,
     },
     {
         title: "Character Overview",
         url: "character",
-        icon: Calendar,
     },
+    {
+        title: "View Logs",
+        url: ""
+    }
 ];
-
+// typeshit
 export function AppSidebar() {
     const { agentId } = useParams();
+    const location = useLocation();
+    const [selectedNavbarItemUrl, setSelectedNavbarItemUrl] = useState("") ;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(location) {
+            let lastRoute = location.pathname.slice(location.pathname.lastIndexOf("/") + 1 , location.pathname.length);
+            setSelectedNavbarItemUrl(lastRoute) ;
+        }
+    }, [location])
 
     return (
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <img src={logoImage} />
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
+                                    <PrimaryButton isActive={selectedNavbarItemUrl == item.url}>
                                         <a href={`/${agentId}/${item.url}`}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
+                                            {item.title}
                                         </a>
-                                    </SidebarMenuButton>
+                                    </PrimaryButton>
                                 </SidebarMenuItem>
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
+                    <SidebarBackButton onClick={() =>  navigate(-1)}/>
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>
