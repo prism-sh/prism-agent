@@ -2,7 +2,7 @@ import { Character, Clients, ModelProviderName } from "@ai16z/eliza";
 import { webSearchPlugin } from "@ai16z/plugin-web-search";
 import tecPredictionsPlugin from "./actions/predictSol";
 import sakPlugin from "./plugins/sak";
-
+// typeshit
 export const character: Character = {
     // ...defaultCharacter,
     name: "tolybot",
