@@ -21,7 +21,7 @@ build-and-push-client:
 
 build-and-push-chart:
 	helm package deploy/chart --version $(NPM_VERSION) --app-version $(NPM_VERSION) -d .
-	curl -u "tec-charts:tec-charts-does-not-matter" --data-binary "@prism-agent-$(NPM_VERSION).tgz" https://charts.inf.prism.sh/api/charts
+	curl -u "$(CHARTS_USER):$(CHARTS_PASSWORD)" --data-binary "@prism-agent-$(NPM_VERSION).tgz" $(CHARTS_URL)
 	rm -f prism-agent-$(NPM_VERSION).tgz
 
 build-and-push: build-and-push-server build-and-push-client build-and-push-chart

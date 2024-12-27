@@ -37,9 +37,10 @@ spec:
             - configMapRef:
                 name: prism-agent-env
             - secretRef:
-                name: prism-agent-secrets-required
+                name: prism-agent-secrets
             - secretRef:
                 name: prism-agent-encryption-key
+                required: false
           ports:
             {{- toYaml .Values.service.ports | nindent 12 }}
           resources:
@@ -51,7 +52,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: UI_PASSWORD
-              value: {{ .Values.agent.ui_password | quote }}
+              value: {{ .Values.agent.ui_password | bcrypt | quote }}
           ports:
             - name: http
               containerPort: 80

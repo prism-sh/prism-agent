@@ -5,10 +5,13 @@
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
 
-agent:
+cloud:
+  enabled: false
   id: prism-agent
-  ui_password: "notasecret"
   agent_key: ""
+
+agent:
+  ui_password: "notasecret"
   config: {}   # Will be supplied by the end user
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
