@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 # Make sure Go is available (e.g., if your devcontainer doesn't already have it).
 # Comment out if you already have Go. Adjust this as needed.
-RUN apt-get install -y golang
+RUN apt-get update && apt-get install -y golang-go
 
 # --- Install ctlptl ---
 RUN go install github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
