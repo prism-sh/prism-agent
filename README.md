@@ -3,6 +3,8 @@
 
 > An opinionanted, batteries-included, ElizaOS distribution designed for ease of development and secure, scalable deployments.
 
+## Why?
+ElizaOS as an ecosystem is difficult to navigate and we wanted a stable(ish) environment we could deploy reliably for custoemrs.
 
 ## Prerequisites
 
