@@ -1,4 +1,6 @@
 load('ext://helm_resource', 'helm_resource', 'helm_repo')
+load('ext://secret', 'secret_create_generic')
+load('ext://configmap', 'configmap_create')
 
 docker_build('ghcr.io/trustless-engineering/prism-agent', 'vendor/eliza',
     dockerfile='vendor/eliza/Dockerfile'
@@ -12,7 +14,12 @@ docker_build('ghcr.io/trustless-engineering/prism-agent', 'vendor/eliza',
 # //     ]
 # // )
 
-k8s_yaml(helm('./deploy/chart'))
+
+secret_create_generic('prism-agent-secrets', from_env_file='.env')
+
+configmap_create('local-prism-agent-character', from_file=['character.json=./character.json'])
+
+k8s_yaml(helm('./deploy/chart', values='deploy/chart/values.local.yaml'))
 
 k8s_resource(
     workload="prism-agent",
