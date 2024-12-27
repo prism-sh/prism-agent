@@ -6,8 +6,6 @@ RUN apt-get update && \
     apt-get install -y curl git && \
     rm -rf /var/lib/apt/lists/*
 
-# Make sure Go is available (e.g., if your devcontainer doesn't already have it).
-# Comment out if you already have Go. Adjust this as needed.
 RUN apt-get update && apt-get install -y golang-go
 
 # --- Install ctlptl ---
