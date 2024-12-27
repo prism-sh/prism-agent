@@ -5,7 +5,7 @@
     "lib": ["ESNext", "dom"],
     "moduleResolution": "Bundler",
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "./src",
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,8 +19,9 @@
     "checkJs": false,
     "noEmitOnError": false,
     "moduleDetection": "force",
-    "allowArbitraryExtensions": true
+    "allowArbitraryExtensions": true,
+    "baseUrl": ".",
   },
   "exclude": ["client"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
 }

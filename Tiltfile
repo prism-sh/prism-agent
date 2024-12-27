@@ -1,11 +1,9 @@
 load('ext://helm_resource', 'helm_resource', 'helm_repo')
-# Docker build configuration
-docker_build('ghcr.io/trustless-engineering/prism-agent', '.',
-    dockerfile='Dockerfile',
-    live_update=[
-        sync('.', '/app'),
-        run('cd /app && npm install', trigger=['package.json', 'package-lock.json']),
-    ]
+load('ext://secret', 'secret_create_generic')
+load('ext://configmap', 'configmap_create')
+
+docker_build('ghcr.io/trustless-engineering/prism-agent', 'vendor/eliza',
+    dockerfile='vendor/eliza/Dockerfile'
 )
 
 docker_build('ghcr.io/trustless-engineering/prism-agent-client', './client',
@@ -16,9 +14,14 @@ docker_build('ghcr.io/trustless-engineering/prism-agent-client', './client',
     ]
 )
 
-k8s_yaml(helm('./deploy/prism-agent'))
+
+secret_create_generic('prism-agent-secrets', from_env_file='.env')
+
+configmap_create('local-prism-agent-character', from_file=['character.json=./character.json'])
+
+k8s_yaml(helm('./deploy/chart', values='deploy/chart/values.local.yaml'))
 
 k8s_resource(
-    workload="chart-prism-agent",
-    port_forwards=["3000:3000"]
+    workload="prism-agent",
+    port_forwards=["3000:3000", "3800:80"]
 )
