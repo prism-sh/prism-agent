@@ -153,4 +153,4 @@ postgresql:
     tag: "new"
   imagePullSecrets:
     - name: image-pull-secret
-  postgresqlSharedPreloadLibraries: "pgaudit,vector"
+  postgresqlSharedPreloadLibraries: "pgaudit"

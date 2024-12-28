@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "rootDir": "src",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@elizaos/*": ["../../vendor/eliza/packages/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

@@ -1,0 +1,4 @@
+packages:
+  - "vendor/eliza"
+  - "vendor/eliza/packages/*"
+  - "packages/*"
