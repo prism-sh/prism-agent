@@ -5,6 +5,9 @@ metadata:
 data:
   # Default settings for all agents
   VERBOSE: "true"
+  
+  # Database and cache settings
+  CACHE_STORE: "database"
   POSTGRES_URL: "postgresql://postgres:prism-agent-pgsql-password@{{ .Release.Name }}-postgresql.{{ .Release.Namespace }}.svc.cluster.local:5432/prism-agent"
 
   # Feature Flags
