@@ -2,6 +2,8 @@ load('ext://helm_resource', 'helm_resource', 'helm_repo')
 load('ext://secret', 'secret_create_generic')
 load('ext://configmap', 'configmap_create')
 
+secret_settings(disable_scrub=True)
+
 docker_build('ghcr.io/trustless-engineering/prism-agent', 'vendor/eliza',
     dockerfile='vendor/eliza/Dockerfile'
 )

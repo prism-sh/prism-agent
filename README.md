@@ -16,6 +16,8 @@ ElizaOS as an ecosystem is difficult to navigate and we wanted a stable(ish) env
 
 1. **Configuration** 
 
+  Signup for an OpenRouter account. Once you have an API key place it in `.env.overrides`
+
   Fill out your standard ElizaOS environment variables in `.env`.
 
 2. **Start Tilt**
