@@ -1,6 +1,6 @@
 import { Action, composeContext, elizaLogger, generateObject, GoalStatus, ModelClass } from "@ai16z/eliza";
 import { z } from "zod";
-import { getSakAgent } from "../common";
+import { getSakAgent } from "../src/common";
 import { parameterExtractionTemplate } from "../templates/deployToken";
 
 export const TokenParamsSchema = z.object({

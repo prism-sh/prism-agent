@@ -1,4 +1,4 @@
-import { IAgentRuntime, Memory } from "@ai16z/eliza";
+import { IAgentRuntime, Memory } from "@elizaos/core";
 import { SolanaAgentKit } from "solana-agent-kit";
 export function getSakAgent(runtime: IAgentRuntime) {
   return new SolanaAgentKit(

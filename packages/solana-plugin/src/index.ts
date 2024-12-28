@@ -1,4 +1,4 @@
-import { Plugin } from "@ai16z/eliza";
+import { Plugin } from "@elizaos/core";
 import { deployCollectionAction } from "./actions/deployCollection";
 import { deploySplTokenAction } from "./actions/deployToken";
 export const solanaPlugin: Plugin = {

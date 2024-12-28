@@ -1,4 +1,4 @@
-import { ActionExample } from "@ai16z/eliza";
+import { ActionExample } from "@elizaos/core";
 
  const isStartingGoalTemplate = `You must respond with ONLY the word "true" or "false".
 
