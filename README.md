@@ -26,10 +26,18 @@ In order to have the best experience, chose a 64GB RAM codespace.
 This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker Desktop) installed.
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-  * [Enable Kubernetes](https://docs.docker.com/desktop/features/kubernetes/) in Docker Desktop.
-* [Tilt](https://docs.tilt.dev/install.html)
+  * Make sure to enable [Kubernetes](https://docs.docker.com/desktop/features/kubernetes/) in Docker Desktop.
+* [Tilt](https://docs.tilt.dev/install.html) - Local Kubernetes Development Toolkit
 
 ## Quickstart
+
+1. **Initialize**
+
+  Setup KIND and the Registry with the init command:
+
+  ```bash
+  make init
+  ```
 
 1. **Configuration** 
 
@@ -57,5 +65,5 @@ This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker
 
 ## Support
 
-Reach out in Discord for help!
+Reach out in [Discord](https://trustless.community) for help!
 
