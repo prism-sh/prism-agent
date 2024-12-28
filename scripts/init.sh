@@ -13,3 +13,5 @@ git submodule update --init
 pushd deploy/chart 
     helm dep update
 popd
+
+touch .env
