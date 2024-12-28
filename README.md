@@ -67,3 +67,4 @@ This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker
 
 Reach out in [Discord](https://trustless.community) for help!
 
+Made with ❤️ by [@wedtm](https://x.com/wedtm) and the [Trustless Engineering Co.](https://trustless.engineering/) team.
