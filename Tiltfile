@@ -10,13 +10,12 @@ load('ext://configmap', 'configmap_create')
 # Disable secret scrubbing in logs for local development
 secret_settings(disable_scrub=True)
 
-
 docker_build('eliza-base', 'vendor/eliza',
     dockerfile='vendor/eliza/Dockerfile'
 )
 
 docker_build('ghcr.io/trustless-engineering/prism-agent', '.',
-    dockerfile='Dockerfile'
+       dockerfile='Dockerfile'
 )
 
 # Build the Prism Agent client container
