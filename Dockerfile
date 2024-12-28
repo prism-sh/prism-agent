@@ -1,3 +1,3 @@
 FROM eliza-base
 
-COPY packages/* ./packages/
+COPY packages ./packages/

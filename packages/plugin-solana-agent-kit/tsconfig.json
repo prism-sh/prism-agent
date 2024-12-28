@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "rootDir": "../plugin-solana-agent-kit/src",
+    "rootDir": "src",
     "moduleResolution": "bundler",
     "paths": {
       "@elizaos/*": ["../../vendor/eliza/packages/*"]
     }
   },
   "include": [
-    "../plugin-solana-agent-kit/src/**/*.ts"
+    "src/**/*.ts"
   ]
 }

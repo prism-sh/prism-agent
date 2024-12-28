@@ -10,3 +10,5 @@ content_cache
 *.tgz
 dist
 .env
+
+.turbo
