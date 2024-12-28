@@ -1,6 +1,6 @@
-import { Action, composeContext, Content, elizaLogger, generateObject, GoalStatus, IAgentRuntime, Memory, ModelClass, State } from "@ai16z/eliza";
+import { getSakAgent } from "@/common";
+import { Action, composeContext, Content, elizaLogger, generateObject, GoalStatus, IAgentRuntime, Memory, ModelClass, State } from "@elizaos/core";
 import { z } from "zod";
-import { getSakAgent } from "../src/common";
 import * as templates from "../templates/deployCollection";
 export const deployCollectionSchema = z.object({
   name: z.string().nullable(),

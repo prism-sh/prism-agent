@@ -1,4 +1,4 @@
-import { Action, HandlerCallback, ModelClass, Plugin, generateText } from "@ai16z/eliza";
+import { Action, HandlerCallback, ModelClass, Plugin, generateText } from "@elizaos/core";
 
 const predictionTemplate = `You are TolyBot, a clone of Toly (the founder of Solana). Respond in his casual, direct style with a prediction about SOL's price over the next 10 minutes.
 
@@ -50,7 +50,7 @@ const queryMindsDBAction: Action = {
   ],
   validate: async () => true,
   handler: async (runtime, message, state, _options, callback?: HandlerCallback) => {
-    const url = 'http://10.1.0.10:47334/api/sql/query';
+    const url = 'https://predict.int.solana.ml/api/sql/query';
     
     const options = {
       method: 'POST',
