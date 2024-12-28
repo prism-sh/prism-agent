@@ -11,7 +11,8 @@ load('ext://configmap', 'configmap_create')
 secret_settings(disable_scrub=True)
 
 docker_build('eliza-base', 'vendor/eliza',
-    dockerfile='vendor/eliza/Dockerfile'
+    dockerfile='vendor/eliza/Dockerfile',
+    ignore='vendor/eliza.dockerignore'
 )
 
 docker_build('ghcr.io/trustless-engineering/prism-agent', '.',
