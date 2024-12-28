@@ -1,11 +1,11 @@
 {
   "name": "prism-agent",
   "version": "1.0.0",
-  "description": "",
+  "description": "Opinionated ElizaOS distribution built for scale",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd vendor/eliza && pnpm run build"
+    "build": "pnpm run build"
   },
   "keywords": [],
   "author": "",

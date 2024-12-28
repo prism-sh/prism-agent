@@ -9,7 +9,7 @@
   },
   "files": [],
   "references": [
-      { "path": "packages/solana-plugin" },
+      { "path": "packages/plugin-solana-agent-kit" },
       { "path": "vendor/eliza" }
   ]
 } 

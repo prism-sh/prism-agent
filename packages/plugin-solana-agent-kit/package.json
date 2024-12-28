@@ -1,5 +1,5 @@
 {
-  "name": "@prism-sh/plugin-solana",
+  "name": "@prism-sh/plugin-solana-agent-kit",
   "version": "0.1.0",
   "main": "dist/index.js",
   "type": "module",

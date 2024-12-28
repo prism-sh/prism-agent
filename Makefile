@@ -7,6 +7,19 @@ init:
 	pushd deploy/chart && helm dep update && popd
 	touch .env
 
+build-eliza:
+	pushd vendor/eliza
+	pnpm install
+	pnpm run build
+	popd
+
+
+clean-eliza:
+	pushd vendor/eliza
+	git reset --hard
+	git clean -fdx
+	popd
+
 clean:
 	tilt down || true
 	kubectl delete pvc --all || true
