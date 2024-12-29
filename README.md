@@ -28,6 +28,7 @@ This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   * Make sure to enable [Kubernetes](https://docs.docker.com/desktop/features/kubernetes/) in Docker Desktop.
 * [Tilt](https://docs.tilt.dev/install.html) - Local Kubernetes Development Toolkit
+* [Helm](https://helm.sh/docs/intro/install/) - Kubernetes Package Manager
 
 After you have installed the required tools (or started your codespace), you are ready to start your agent!
 
