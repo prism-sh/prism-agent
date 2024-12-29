@@ -12,3 +12,5 @@ dist
 .env
 
 .turbo
+
+.DS_Store
