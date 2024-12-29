@@ -1,0 +1,14 @@
+!index.ts
+!character.ts
+.env
+node_modules
+
+db.sqlite
+data
+content_cache
+
+*.tgz
+dist
+.env
+
+.turbo

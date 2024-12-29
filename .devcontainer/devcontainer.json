@@ -1,0 +1,8 @@
+{
+  "name": "PRISM AI Agent",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+  }
+}

@@ -1,0 +1,15 @@
+volumes:
+- name: prism-agent-character
+  configMap:
+    name: local-prism-agent-character
+    items:
+    - key: character.json
+      path: character.json
+
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: prism-agent-pgsql-password
+    username: prism-agent
+    password: prism-agent-db-password
+    database: prism-agent

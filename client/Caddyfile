@@ -1,0 +1,24 @@
+{
+    admin off
+}
+:80 {
+    # Enable Gzip compression
+    encode gzip
+
+    # Handle API requests
+    handle /api/* {
+        uri strip_prefix /api
+        reverse_proxy localhost:3000
+    }
+
+    # Handle static files
+    handle {
+        root * /usr/share/caddy
+        try_files {path} /index.html
+        file_server
+    }
+
+    basic_auth / {
+        prism-agent {$UI_PASSWORD}
+    }
+} 

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prism-agent-env
+data:
+  # Default settings for all agents
+  VERBOSE: "true"
+  
+  # Database and cache settings
+  CACHE_STORE: "redis"
+  REDIS_URL: "redis://:{{ .Values.redis.auth.password }}@{{ .Release.Name }}-redis-master.{{ .Release.Namespace }}.svc.cluster.local:6379"
+  POSTGRES_URL: "postgresql://postgres:{{ .Values.postgresql.auth.postgresPassword }}@{{ .Release.Name }}-postgresql.{{ .Release.Namespace }}.svc.cluster.local:5432/{{ .Values.postgresql.auth.database }}"
+
+  # Feature Flags
+  IMAGE_GEN: "true"
+  USE_OPENAI_EMBEDDING: "true"
