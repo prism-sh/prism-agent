@@ -45,7 +45,7 @@ After you have installed the required tools (or started your codespace), you are
 
 ## Quickstart
 
-1. **Initialize**
+0. **Initialize**
 
   Setup KIND and the Registry with the init command:
 
