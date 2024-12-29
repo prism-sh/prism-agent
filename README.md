@@ -4,6 +4,7 @@
 > An opinionanted, batteries-included, ElizaOS distribution designed for ease of development and secure, scalable deployments.
 
 ## Why?
+
 * ElizaOS as an ecosystem is difficult to navigate and we wanted a stable(ish) environment we could deploy reliably for custoemrs.
 * We wanted to be able to not only deploy agents at scale within Trustless Engineering Co., but we also wanted our customers to be able to run their agents on-prem.
 
@@ -27,8 +28,16 @@ This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   * Make sure to enable [Kubernetes](https://docs.docker.com/desktop/features/kubernetes/) in Docker Desktop.
+* [CtlPtl](https://github.com/tilt-dev/ctlptl) - Local Kubernetes Cluster Controller
 * [Tilt](https://docs.tilt.dev/install.html) - Local Kubernetes Development Toolkit
 * [Helm](https://helm.sh/docs/intro/install/) - Kubernetes Package Manager
+* [KIND](https://kind.sigs.k8s.io/) - Kubernetes-in-Docker
+
+You can install all of these with homebrew via:
+
+```bash
+brew install tilt ctlptl helm kind
+```
 
 After you have installed the required tools (or started your codespace), you are ready to start your agent!
 
