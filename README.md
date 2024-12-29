@@ -22,6 +22,8 @@ In order to have the best experience, chose a 64GB RAM codespace.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/prism-sh/prism-agent)
 
+Once your codespace has started, you can skip directly to the Quickstart section!
+
 ### Local Installation
 
 This repo will work on Linux/MacOS/Windows as long as you have Docker (or Docker Desktop) installed.
