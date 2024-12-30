@@ -119,7 +119,7 @@ export default function Chat() {
                         <img width={"22px"} src={sendIcon} className={(mutation.isPending ? "opacity-50" : "opacity-100")}></img>
                     </button>
                 </form>
-
+{/* tryin */}
             </div>
         </div>
     );
