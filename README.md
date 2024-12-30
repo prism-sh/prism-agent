@@ -6,6 +6,8 @@ An opinionated, batteries-included, ElizaOS distribution designed for ease of de
 
 PRISM AI Agent provides a stable environment for deploying AI agents at scale, both within Trustless Engineering Co. and for customers' on-premises deployments.
 
+Watch a quick [demo](https://app.arcade.software/share/4Bv0R5Bt6JZ4TbQWZL3n) on how to deploy using Github Codespaces!
+
 ## Key Features
 - Simplified ElizaOS setup
 - Isolated structure to allow custom plugins/agents
